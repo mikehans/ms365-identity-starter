@@ -4,7 +4,12 @@
   "description": "Starter for M365 Identity based projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "node ./build/startMessage.js",
+    "start": "npm-run-all --parallel devServer lint:watch",
+    "lint": "esw src build",
+    "lint:watch": "npm run lint -- --watch",
+    "devServer": "babel-node ./build/devServer.js",
+    "clean": "rimraf ./dist"
   },
   "repository": {
     "type": "git",
@@ -15,5 +20,28 @@
   "bugs": {
     "url": "https://github.com/mikehans/ms365-identity-starter/issues"
   },
-  "homepage": "https://github.com/mikehans/ms365-identity-starter#readme"
+  "homepage": "https://github.com/mikehans/ms365-identity-starter#readme",
+  "devDependencies": {
+    "@azure/msal-browser": "^2.7.0",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.1",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
+    "babel-loader": "^8.2.1",
+    "chalk": "^4.1.0",
+    "css-loader": "^5.0.1",
+    "eslint": "^7.13.0",
+    "eslint-watch": "^7.0.0",
+    "express": "^4.17.1",
+    "html-webpack-plugin": "^4.5.0",
+    "npm-run-all": "^4.1.5",
+    "open": "^7.3.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  }
 }
